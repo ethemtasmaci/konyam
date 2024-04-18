@@ -28,7 +28,7 @@ const Kurlar = () => {
                         borderTopLeftRadius: 6,
                         borderTopRightRadius: 6,
                         width: 95,
-                        height: 10,
+                        height: 5,
                         backgroundColor: '#8CB75E'
                     }} />
                     <Image style={{
@@ -73,7 +73,7 @@ const Kurlar = () => {
                         borderTopLeftRadius: 6,
                         borderTopRightRadius: 6,
                         width: 95,
-                        height: 10,
+                        height: 5,
                         backgroundColor: '#D97070'
                     }} />
                     <Image style={{
@@ -117,7 +117,7 @@ const Kurlar = () => {
                         borderTopLeftRadius: 6,
                         borderTopRightRadius: 6,
                         width: 95,
-                        height: 10,
+                        height: 5,
                         backgroundColor: '#FFBC57'
                     }} />
                     <Image style={{
@@ -161,7 +161,7 @@ const Kurlar = () => {
                         borderTopLeftRadius: 6,
                         borderTopRightRadius: 6,
                         width: 95,
-                        height: 10,
+                        height: 5,
                         backgroundColor: '#5EA5B7'
                     }} />
                     <Image style={{

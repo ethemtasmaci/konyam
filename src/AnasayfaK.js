@@ -7,6 +7,9 @@ import Kurlar from '../components/Kurlar'
 import GirisPanel from '../components/GirisPanel'
 import HaritaSvg from '../svg/HaritaSvg'
 import ListSvg from '../svg/ListSvg'
+import Haritalar from '../components/Haritalar'
+import HaritalarResim from '../components/HaritalarResim'
+import AltMenu from '../components/AltMenu'
 
 const AnasayfaK = () => {
   return (
@@ -73,6 +76,12 @@ const AnasayfaK = () => {
             }}>Liste Görünümü</Text>
           </View>
         </View>
+
+        {/* <Haritalar /> */}
+
+        <HaritalarResim />
+
+        <AltMenu />
 
       </View>
     </>

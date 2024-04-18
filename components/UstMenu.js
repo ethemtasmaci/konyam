@@ -1,9 +1,17 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
+
+
 import MenuSvg from '../svg/MenuSvg'
 import BildirimSvg from '../svg/BildirimSvg'
 
 const UstMenu = () => {
+    const navigation = useNavigation();
+
+    const handleMenuPress = (screenName) => {
+        navigation.navigate(screenName); // İlgili sayfaya yönlendir
+    };
     return (
         <>
             <View style={{
@@ -19,9 +27,9 @@ const UstMenu = () => {
                     flexDirection: 'row',
                 }}>
 
-                    <View style={{ marginRight: 'auto' }}>
+                    <TouchableOpacity  onPress={() => handleMenuPress('YanMenu')} style={{ marginRight: 'auto' }}>
                         <MenuSvg height={25} width={25} fill={'#000'} />
-                    </View>
+                    </TouchableOpacity>
 
                     <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                         <Image source={require("../img/logo.png")} />
