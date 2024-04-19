@@ -135,7 +135,7 @@ const GirisYap = () => {
               <View style={{ borderBottomColor: '#8CB75E', borderBottomWidth: 1, height: 1, width: '15%', marginTop: 30 }} />
             </View>
 
-            <View style={{
+            <TouchableOpacity onPress={() => handleMenuPress('KayitOl')} style={{
               marginLeft: 'auto',
               marginRight: 'auto',
               flexDirection: 'row',
@@ -148,7 +148,7 @@ const GirisYap = () => {
                 fontFamily: 'Nunito Sans',
                 marginTop: 2
               }}>Yeni Hesap Oluşturun</Text>
-            </View>
+            </TouchableOpacity>
 
           </View>
         </View>

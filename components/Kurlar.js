@@ -5,7 +5,7 @@ const Kurlar = () => {
     return (
         <View style={{
             width: '100%',
-            height: 200,
+            height: 180,
             backgroundColor: '#F6F6F6',
 
         }}>

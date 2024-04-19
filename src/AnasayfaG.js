@@ -1,5 +1,5 @@
-import { View, Text, VirtualizedList, StatusBar, Image } from 'react-native'
-import React from 'react'
+import { View, Text, VirtualizedList, StatusBar, Image, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react';
 
 import UstMenu from '../components/UstMenu'
 import InstaStory from '../components/InstaStory'
@@ -10,8 +10,10 @@ import ListSvg from '../svg/ListSvg'
 import HaritalarResim from '../components/HaritalarResim'
 import AltMenu from '../components/AltMenu'
 import HosGelddin from './HosGelddin'
+import ListGorunumu from '../components/ListGorunumu'
 
 const AnasayfaG = () => {
+    const [secilenGorunum, setSecilenGorunum] = useState('Harita');
     return (
         <>
             <StatusBar backgroundColor="transparent" translucent={true} />
@@ -35,51 +37,61 @@ const AnasayfaG = () => {
                     borderRadius: 6,
                     paddingTop: 4,
                 }}>
-                    <View style={{
-                        backgroundColor: '#8CB75E',
+                    {/* Harita Görünümü */}
+                    <TouchableOpacity style={{
                         height: 35,
                         width: '45%',
-                        borderRadius: 3,
                         marginLeft: 13,
                         marginRight: 12,
-                        flexDirection: 'row'
-                    }}>
-                        <HaritaSvg height={22} width={22} fill={'#fff'} style={{
-                            margin: 6,
-                            marginLeft: 20
-                        }} />
-                        <Text style={{
-                            color: '#fff',
-                            marginTop: 6,
-                            fontFamily: 'Nunito Sans',
-                            fontSize: 15,
-                            fontVariant: 'Regular'
-                        }}>Harita Görünümü</Text>
-                    </View>
-                    <View style={{
+                    }} onPress={() => setSecilenGorunum('Harita')}>
+                        <View style={{
+                            backgroundColor: secilenGorunum === 'Harita' ? '#8CB75E' : '#F3F3F3',
+                            borderRadius: 3,
+                            flexDirection: 'row',
+                            alignItems: 'center'
+                        }}>
+                            <HaritaSvg height={22} width={22} fill={secilenGorunum === 'Harita' ? '#fff' : '#9f9f9f'} style={{
+                                margin: 6,
+                                marginLeft: 20
+                            }} />
+                            <Text style={{
+                                color: secilenGorunum === 'Harita' ? '#fff' : '#9f9f9f',
+                                marginTop: -2,
+                                fontFamily: 'Nunito Sans',
+                                fontSize: 15,
+                                fontVariant: 'Regular'
+                            }}>Harita Görünümü</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    {/* Liste Görünümü */}
+                    <TouchableOpacity style={{
                         width: '45%',
                         height: 35,
-                        backgroundColor: '#F3F3F3',
-                        borderRadius: 3,
-                        flexDirection: 'row'
-                    }}>
-                        <ListSvg height={22} width={22} style={{
-                            margin: 6,
-                            marginLeft: 20
-                        }} />
-                        <Text style={{
-                            color: '#9f9f9f',
-                            marginTop: 6,
-                            fontFamily: 'Nunito Sans',
-                            fontSize: 15,
-                            fontVariant: 'Regular'
-                        }}>Liste Görünümü</Text>
-                    </View>
+                    }} onPress={() => setSecilenGorunum('Liste')}>
+                        <View style={{
+                            backgroundColor: secilenGorunum === 'Liste' ? '#8CB75E' : '#F3F3F3',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            borderRadius: 3,
+                        }}>
+                            <ListSvg height={22} width={22} fill={secilenGorunum === 'Liste' ? '#fff' : '#9f9f9f'} style={{
+                                margin: 6,
+                                marginTop: 6,
+                                marginLeft: 20
+                            }} />
+                            <Text style={{
+                                color: secilenGorunum === 'Liste' ? '#fff' : '#9f9f9f',
+                                fontSize: 15,
+                                fontFamily: 'Nunito Sans',
+                                fontVariant: 'Regular',
+                            }}>Liste Görünümü</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
 
-                {/* <Haritalar /> */}
-
-                <HaritalarResim />
+                {/* Alt alan - Seçilen görünüme göre içeriğin render edilmesi */}
+                {secilenGorunum === 'Harita' ? <HaritalarResim /> : <ListGorunumu />}
 
                 <AltMenu />
 

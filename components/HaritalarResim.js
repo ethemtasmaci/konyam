@@ -13,7 +13,8 @@ const HaritalarResim = () => {
                 borderWidth: 1,
                 borderColor: '#E9E9E9',
                 borderRadius: 11,
-                marginLeft: 10
+                marginLeft: 'auto',
+                marginRight: 'auto'
             }}>
                 <View style={{
                 }}>

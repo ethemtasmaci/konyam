@@ -11,6 +11,9 @@ import Uyari from './components/Uyari';
 import GirisYap from './src/GirisYap';
 import KayitOl from './src/KayitOl';
 import AnasayfaG from './src/AnasayfaG';
+import DogralulamaYHO from './src/DogralulamaYHO';
+import KisiselBilgiler from './src/KisiselBilgiler';
+import IlceSecimi from './components/IlceSecimi';
 
 const Stack = createStackNavigator();
 
@@ -25,8 +28,13 @@ function App() {
 
         <Stack.Screen name="AnasayfaK" component={AnasayfaK} />
         <Stack.Screen name="AnasayfaG" component={AnasayfaG} />
+
         <Stack.Screen name="GirisYap" component={GirisYap} />
+
         <Stack.Screen name="KayitOl" component={KayitOl} />
+        <Stack.Screen name="DogralulamaYHO" component={DogralulamaYHO} />
+        <Stack.Screen name="KisiselBilgiler" component={KisiselBilgiler} />
+        <Stack.Screen name="IlceSecimi" component={IlceSecimi} />
 
         <Stack.Screen name="YanMenu" component={YanMenu} />
         <Stack.Screen name="Uyari" component={Uyari} />
