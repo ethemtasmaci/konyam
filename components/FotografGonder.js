@@ -9,6 +9,8 @@ import React, { useState, useEffect } from 'react'
 import GeriSvg from '../svg/GeriSvg'
 import KameraSvg from '../svg/KameraSvg'
 import TekrarSvg from '../svg/TekrarSvg'
+import UyariSvg from '../svg/UyariSvg';
+// import FotografHataMesaji from './FotografHataMesaji';
 
 const FotografGonder = () => {
     const [photos, setPhotos] = useState([]);
@@ -17,6 +19,10 @@ const FotografGonder = () => {
 
     const handleMenuPress = (screenName) => {
         navigation.navigate(screenName); // İlgili sayfaya yönlendir
+    };
+
+    const resetPhotos = () => {
+        setPhotos([]);
     };
 
     useEffect(() => {
@@ -46,19 +52,14 @@ const FotografGonder = () => {
             });
     };
 
-    const takePhoto = () => {
+    const takePhoto = async () => {
         if (photos.length < 3) {
-            CameraKitCamera.openCamera({
-                // Kamera ayarlarını buraya ekleyin
-            }).then((response) => {
-                if (response.uri) {
-                    setPhotos([...photos, response.uri]);
-                }
-            }).catch((error) => {
-                console.log('Kamera hatası:', error);
-            });
+            const photo = await this.camera.capture();
+            setPhotos([...photos, photo.uri]);
         } else {
+            // <FotografHataMesaji />
             Alert.alert('Hata', 'En fazla 3 fotoğraf çekebilirsiniz.', [{ text: 'Tamam' }]);
+            console.log('Hata, 3 fotoraftan fazla oldu.');
         }
     };
 
@@ -71,17 +72,47 @@ const FotografGonder = () => {
     // Fotoğraf bileşeni
     const PhotoItem = ({ uri, index }) => {
         return (
-            <TouchableOpacity onPress={() => deletePhoto(index)}>
-                <Image source={{ uri }} style={{
-                    width: 55,
-                    height: 55,
-                    borderRadius: 9,
-                    backgroundColor: '#DEDEDE',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    margin: 5,
-                }} />
-            </TouchableOpacity>
+            <View style={{
+                width: 65,
+                height: 65,
+                top: 325,
+                marginLeft: 'auto',
+                right: 20,
+                borderRadius: 12,
+                borderWidth: 1,
+                borderColor: '#8CB75E',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginBottom: 15
+            }}>
+                <Text style={{
+                    width: 20,
+                    height: 20,
+                    backgroundColor: '#C42626',
+                    color: '#fff',
+                    fontSize: 15,
+                    borderRadius: 50,
+                    textAlign: 'center',
+                    marginLeft: 'auto',
+                    right: -10,
+                    top: -13,
+                    zIndex: 100,
+                }}>
+                    X
+                </Text>
+                <TouchableOpacity onPress={() => deletePhoto(index)}>
+                    <Image source={{ uri }} style={{
+                        width: 55,
+                        height: 55,
+                        borderRadius: 9,
+                        backgroundColor: '#DEDEDE',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginTop: -20,
+                        zIndex: 1
+                    }} />
+                </TouchableOpacity>
+            </View>
         );
     };
 
@@ -117,7 +148,7 @@ const FotografGonder = () => {
                     width: '90%',
                     left: 20,
                     right: 15,
-                    top: 50
+                    top: 30,
                 }}>
                     <View style={{
                         flexDirection: 'row',
@@ -159,122 +190,23 @@ const FotografGonder = () => {
 
 
                             {/* bu kısım ise buna basınca bütün çekilen Fotoğrafları silecek */}
-                            <TekrarSvg height={30} width={30} style={{
-                                marginLeft: 'auto',
-                                right: 20,
-                                top: 30
-                            }} />
+                            <TouchableOpacity onPress={resetPhotos}>
+                                <TekrarSvg
+                                    height={30}
+                                    width={30}
+                                    style={{
+                                        marginLeft: 'auto',
+                                        right: 20,
+                                        top: 30
+                                    }}
+                                />
+                            </TouchableOpacity>
 
                             {/* bu 3 kısımda bir biri ile aynı mantıkta her çekilen fotoğraf her birine gelecek  */}
-                            <View style={{
-                                width: 65,
-                                height: 65,
-                                top: 325,
-                                marginLeft: 'auto',
-                                right: 20,
-                                borderRadius: 12,
-                                borderWidth: 1,
-                                borderColor: '#8CB75E',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                            }}>
-                                <Text style={{
-                                    width: 20,
-                                    height: 20,
-                                    backgroundColor: '#C42626',
-                                    color: '#fff',
-                                    fontSize: 15,
-                                    borderRadius: 50,
-                                    textAlign: 'center',
-                                    marginLeft: 'auto',
-                                    right: -10,
-                                    top: -5
-                                }}>
-                                    X
-                                </Text>
-                                <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 20 }}>
-                                    {photos.map((photo, index) => (
-                                        <PhotoItem key={index} uri={photo} index={index} />
-                                    ))}
-                                </View>
-                            </View>
-
-                            <View style={{
-                                width: 65,
-                                height: 65,
-                                top: 340,
-                                marginLeft: 'auto',
-                                right: 20,
-                                borderRadius: 12,
-                                borderWidth: 1,
-                                borderColor: '#8CB75E',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                            }}>
-                                <Text style={{
-                                    width: 20,
-                                    height: 20,
-                                    backgroundColor: '#C42626',
-                                    color: '#fff',
-                                    fontSize: 15,
-                                    borderRadius: 50,
-                                    textAlign: 'center',
-                                    marginLeft: 'auto',
-                                    right: -10,
-                                    top: -5
-                                }}>
-                                    X
-                                </Text>
-                                <View style={{
-                                    width: 55,
-                                    height: 55,
-                                    borderRadius: 9,
-                                    backgroundColor: '#DEDEDE',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    top: -10
-                                }}>
-
-                                </View>
-                            </View>
-
-                            <View style={{
-                                width: 65,
-                                height: 65,
-                                top: 355,
-                                marginLeft: 'auto',
-                                right: 20,
-                                borderRadius: 12,
-                                borderWidth: 1,
-                                borderColor: '#8CB75E',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                            }}>
-                                <Text style={{
-                                    width: 20,
-                                    height: 20,
-                                    backgroundColor: '#C42626',
-                                    color: '#fff',
-                                    fontSize: 15,
-                                    borderRadius: 50,
-                                    textAlign: 'center',
-                                    marginLeft: 'auto',
-                                    right: -10,
-                                    top: -5
-                                }}>
-                                    X
-                                </Text>
-                                <View style={{
-                                    width: 55,
-                                    height: 55,
-                                    borderRadius: 9,
-                                    backgroundColor: '#DEDEDE',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    top: -10
-                                }}>
-
-                                </View>
+                            <View style={{ justifyContent: 'center', marginBottom: 20 }}>
+                                {photos.map((photo, index) => (
+                                    <PhotoItem key={index} uri={photo} index={index} />
+                                ))}
                             </View>
 
                         </View>

@@ -107,7 +107,7 @@ const IcerikGonder = () => {
                                 }}>Fotoğraf</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={{
+                            <TouchableOpacity onPress={() => handleMenuPress('VideoGonder')} style={{
                                 width: '32%',
                                 height: 90,
                                 backgroundColor: '#EC8787',

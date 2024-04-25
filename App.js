@@ -23,6 +23,7 @@ import ParolaUnuttumSon from './src/ParolaUnuttumSon';
 import IcerikGonder from './components/IcerikGonder';
 import SesKayitGonder from './components/SesKayitGonder';
 import FotografGonder from './components/FotografGonder';
+import VideoGonder from './components/VideoGonder';
 
 const Stack = createStackNavigator();
 
@@ -59,6 +60,7 @@ function App() {
         <Stack.Screen name="IcerikGonder" component={IcerikGonder} />
         <Stack.Screen name="SesKayitGonder" component={SesKayitGonder} />
         <Stack.Screen name="FotografGonder" component={FotografGonder} />
+        <Stack.Screen name="VideoGonder" component={VideoGonder} />
 
       </Stack.Navigator>
     </NavigationContainer>
