@@ -67,7 +67,7 @@ const YanMenu = () => {
                     }}>
                         <TouchableOpacity onPress={() => setSelectedMenu('AnaMenu')}>
                             <View style={{
-                                backgroundColor: selectedMenu === 'AnaMenu' ? '#EEEEEE' : '#fff',
+                                backgroundColor: selectedMenu === 'AnaMenu' ? '#EEEEEE' : '#F7F7F7',
                                 width: 210,
                                 height: 65,
                                 paddingTop: 20
@@ -80,11 +80,11 @@ const YanMenu = () => {
                                     fontWeight: 'regular',
                                 }}>Ana Menü</Text>
                             </View>
-                            <View style={{ width: 210, height: 3, backgroundColor: selectedMenu === 'AnaMenu' ? '#88BF41' : '#fff' }} />
+                            <View style={{ width: 210, height: 3, backgroundColor: selectedMenu === 'AnaMenu' ? '#88BF41' : '#F7F7F7' }} />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => setSelectedMenu('FaydaliSayfalar')}>
                             <View style={{
-                                backgroundColor: selectedMenu === 'FaydaliSayfalar' ? '#EEEEEE' : '#fff',
+                                backgroundColor: selectedMenu === 'FaydaliSayfalar' ? '#EEEEEE' : '#F7F7F7',
                                 width: 210,
                                 height: 65,
                                 paddingTop: 20
@@ -94,10 +94,10 @@ const YanMenu = () => {
                                     textAlign: 'center',
                                     fontFamily: 'Nunito Sans',
                                     fontSize: 18,
-                                    fontWeight: 'regular'
+                                    fontWeight: 'regular',
                                 }}>Faydalı Sayfalar</Text>
                             </View>
-                            <View style={{ width: 210, height: 3, backgroundColor: selectedMenu === 'FaydaliSayfalar' ? '#88BF41' : '#fff' }} />
+                            <View style={{ width: 210, height: 3, backgroundColor: selectedMenu === 'FaydaliSayfalar' ? '#88BF41' : '#F7F7F7' }} />
                         </TouchableOpacity>
                     </View>
 

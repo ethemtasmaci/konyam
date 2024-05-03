@@ -26,7 +26,7 @@ const AltMenuG = () => {
                     marginTop: 40,
                     width: '100%',
                     height: '62%',
-                    backgroundColor: '#fff',
+                    backgroundColor: '#F5F5F5',
                     borderRadius: 10,
                     flexDirection: 'row',
                     paddingTop: 20
@@ -36,28 +36,13 @@ const AltMenuG = () => {
 
                     <HaberSvg height={30} width={30} style={{ left: 23 + 50 }} />
 
-                    <TouchableOpacity onPress={() => handleMenuPress('IcerikGonder')}>
-                        <LinearGradient
-                            colors={['#C1F18E', '#C1F18E']}
-                            style={{
-                                borderRadius: 50,
-                                width: 80,
-                                height: 80,
-                                left: 73 + 25,
-                                top: -55
-                            }}>
-                            {/* İçerik buraya gelecek */}
-                            <GonderSvg height={50} width={50} style={{
-                                marginLeft: 'auto',
-                                marginRight: 'auto',
-                                marginTop: 18
-                            }} />
-                        </LinearGradient>
+                    <TouchableOpacity style={{ left: 100, top:-50 }} onPress={() => handleMenuPress('IcerikGonder')}>
+                        <GonderSvg />
                     </TouchableOpacity>
 
-                    <KullaniciSvg height={30} width={30} fill={'#B9B9B9'} style={{ left: 90 + 30 }} />
+                    <KullaniciSvg height={30} width={30} fill={'#B9B9B9'} style={{ left: 90 + 28 }} />
 
-                    <AyarlarSvg height={30} width={30} style={{ left: 110 + 60 }} />
+                    <AyarlarSvg height={30} width={30} style={{ left: 110 + 45 }} />
 
                 </View>
 

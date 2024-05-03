@@ -12,7 +12,7 @@ const ListGorunumu = () => {
             <View style={{
                 marginTop: 15,
                 width: '100%',
-                height: 225,
+                height: 220,
                 backgroundColor: '#FFFFFF',
                 borderWidth: 1,
                 borderColor: '#E9E9E9',

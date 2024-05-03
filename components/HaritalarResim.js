@@ -1,5 +1,6 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
+// import MapView from 'react-native-maps';
 import BuyutmeSvg from '../svg/BuyutmeSvg'
 
 const HaritalarResim = () => {
@@ -10,7 +11,7 @@ const HaritalarResim = () => {
                 width: '95%',
                 height: 215,
                 backgroundColor: '#FFFFFF',
-                borderWidth: 1,
+                borderWidth: 0.5,
                 borderColor: '#E9E9E9',
                 borderRadius: 11,
                 marginLeft: 'auto',
@@ -22,7 +23,7 @@ const HaritalarResim = () => {
                     {/* bu kısımda ki kodlar üstte olacak  */}
                     <Text style={{
                         width: 125,
-                        height: 20,
+                        height: 30,
                         fontSize: 15,
                         fontFamily: 'Nunito Sans',
                         color: '#000',
@@ -31,7 +32,8 @@ const HaritalarResim = () => {
                         position: 'relative',
                         zIndex: 100,
                         position: 'absolute',
-                        top: 11,
+                        top: 7,
+                        paddingTop: 5
                     }}>Gündem <Text style={{ color: '#8CB75E' }}>Haritası</Text></Text>
 
                     <View style={{
@@ -58,8 +60,28 @@ const HaritalarResim = () => {
                         marginLeft: 8
                     }} source={require("../img/harita.png")} />
 
+                    {/* <View>
+                        <MapView
+                            style={{
+                                position: 'relative',
+                                zIndex: 1,
+                                height: '93%',
+                                width: '95%',
+                                borderRadius: 5,
+                                marginTop: 10,
+                                marginLeft: 8
+                            }}
+                            initialRegion={{
+                                latitude: 37.78825,
+                                longitude: -122.4324,
+                                latitudeDelta: 0.0922,
+                                longitudeDelta: 0.0421,
+                            }}
+                        />
+                    </View> */}
+
                 </View>
-            </View>
+            </View >
         </>
     )
 }

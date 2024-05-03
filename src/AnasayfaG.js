@@ -7,16 +7,20 @@ import Kurlar from '../components/Kurlar'
 import HaritaSvg from '../svg/HaritaSvg'
 import ListSvg from '../svg/ListSvg'
 import HaritalarResim from '../components/HaritalarResim'
-import HosGelddin from './HosGelddin'
 import ListGorunumu from '../components/ListGorunumu'
 import AltMenuG from '../components/AltMenuG';
+import HosGeldin from './HosGelddin';
 
 const AnasayfaG = () => {
     const [secilenGorunum, setSecilenGorunum] = useState('Harita');
     return (
         <>
             <StatusBar backgroundColor="transparent" translucent={true} />
-            <View>
+            <View style={{
+                width: '100%',
+                height: '100%',
+                backgroundColor: '#fff'
+            }}>
 
                 <UstMenu />
 
@@ -24,7 +28,7 @@ const AnasayfaG = () => {
 
                 <Kurlar />
 
-                <HosGelddin />
+                <HosGeldin />
 
                 <View style={{
                     flexDirection: 'row',
@@ -32,7 +36,7 @@ const AnasayfaG = () => {
                     marginLeft: 'auto',
                     marginRight: 'auto',
                     height: 44,
-                    backgroundColor: '#F3F3F3',
+                    backgroundColor: '#FFF',
                     borderRadius: 6,
                     paddingTop: 4,
                 }}>
@@ -44,7 +48,7 @@ const AnasayfaG = () => {
                         marginRight: 12,
                     }} onPress={() => setSecilenGorunum('Harita')}>
                         <View style={{
-                            backgroundColor: secilenGorunum === 'Harita' ? '#8CB75E' : '#F3F3F3',
+                            backgroundColor: secilenGorunum === 'Harita' ? '#8CB75E' : '#fff',
                             borderRadius: 3,
                             flexDirection: 'row',
                             alignItems: 'center'
@@ -69,7 +73,7 @@ const AnasayfaG = () => {
                         height: 35,
                     }} onPress={() => setSecilenGorunum('Liste')}>
                         <View style={{
-                            backgroundColor: secilenGorunum === 'Liste' ? '#8CB75E' : '#F3F3F3',
+                            backgroundColor: secilenGorunum === 'Liste' ? '#8CB75E' : '#fff',
                             flexDirection: 'row',
                             alignItems: 'center',
                             borderRadius: 3,

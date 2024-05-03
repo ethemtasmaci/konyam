@@ -39,7 +39,7 @@ const OnKisim1 = ({ navigation }) => (
         fontWeight: 'light',
         width: '90%',
         left: 24,
-        top: 17
+        marginTop: 17
       }}>
         Kullanıcılarımızdan gelen anlık veriler sayesinde şehrin her yerinde gerçekleşen olayları sizlere anlık olarak aktarıyoruz.
       </Text>
@@ -51,7 +51,7 @@ const OnKisim1 = ({ navigation }) => (
       marginLeft: 'auto',
       marginRight: 'auto',
     }}>
-      <View style={{
+      <TouchableOpacity onPress={() => navigation.navigate('OnKisim1')} style={{
         width: 120,
         height: 4,
         top: 45,
@@ -59,7 +59,7 @@ const OnKisim1 = ({ navigation }) => (
         backgroundColor: '#8CB75E',
       }} />
 
-      <View style={{
+      <TouchableOpacity onPress={() => navigation.navigate('OnKisim2')} style={{
         width: 120,
         height: 4,
         marginTop: 45,
@@ -68,7 +68,7 @@ const OnKisim1 = ({ navigation }) => (
         backgroundColor: '#978D86',
       }} />
 
-      <View style={{
+      <TouchableOpacity onPress={() => navigation.navigate('OnKisim3')} style={{
         width: 120,
         height: 4,
         marginTop: 45,
@@ -78,6 +78,7 @@ const OnKisim1 = ({ navigation }) => (
       }} />
     </View>
 
+    {/* bu kısım OnKisim2 gidiyor ama pat diye biz bunu daha kibar ve sağ doğru kayarak gitmesi lazım  */}
     <TouchableOpacity onPress={() => navigation.navigate('OnKisim2')}>
       <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
         <View style={{
@@ -85,7 +86,7 @@ const OnKisim1 = ({ navigation }) => (
           height: 60,
           backgroundColor: '#8CB75E',
           borderRadius: 8,
-          marginTop: 43
+          marginTop: 52
         }}>
           <Text style={{
             color: '#fff',

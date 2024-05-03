@@ -16,7 +16,11 @@ const AnasayfaK = () => {
   return (
     <>
       <StatusBar backgroundColor="transparent" translucent={true} />
-      <View>
+      <View style={{
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#fff'
+      }}>
 
         <UstMenu />
 
@@ -28,11 +32,13 @@ const AnasayfaK = () => {
 
         <View style={{
           flexDirection: 'row',
-          width: '98%',
+          width: '95%',
           marginLeft: 'auto',
           marginRight: 'auto',
           height: 44,
-          backgroundColor: '#F3F3F3',
+          backgroundColor: '#fff',
+          borderColor: '#F5F5F5',
+          borderWidth: 1,
           borderRadius: 6,
           paddingTop: 4,
         }}>
@@ -41,17 +47,17 @@ const AnasayfaK = () => {
             height: 35,
             width: '45%',
             marginLeft: 13,
-            marginRight: 12,
+            marginRight: 8,
           }} onPress={() => setSecilenGorunum('Harita')}>
             <View style={{
-              backgroundColor: secilenGorunum === 'Harita' ? '#8CB75E' : '#F3F3F3',
+              backgroundColor: secilenGorunum === 'Harita' ? '#8CB75E' : '#fff',
               borderRadius: 3,
               flexDirection: 'row',
               alignItems: 'center'
             }}>
               <HaritaSvg height={22} width={22} fill={secilenGorunum === 'Harita' ? '#fff' : '#9f9f9f'} style={{
                 margin: 6,
-                marginLeft: 20
+                marginLeft: 10
               }} />
               <Text style={{
                 color: secilenGorunum === 'Harita' ? '#fff' : '#9f9f9f',
@@ -69,7 +75,7 @@ const AnasayfaK = () => {
             height: 35,
           }} onPress={() => setSecilenGorunum('Liste')}>
             <View style={{
-              backgroundColor: secilenGorunum === 'Liste' ? '#8CB75E' : '#F3F3F3',
+              backgroundColor: secilenGorunum === 'Liste' ? '#8CB75E' : '#fff',
               flexDirection: 'row',
               alignItems: 'center',
               borderRadius: 3,

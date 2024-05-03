@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Platform } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 
 import OnKisim1 from './src/OnKisim1';
 import OnKisim2 from './src/OnKisim2';
@@ -42,9 +42,13 @@ function App() {
   }, []);
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="OnKisim1" screenOptions={{ headerShown: false }}>
-      {/* <Stack.Navigator initialRouteName="IcerikGonder" screenOptions={{ headerShown: false }}> */}
-
+     <Stack.Navigator 
+        initialRouteName="OnKisim1" 
+        screenOptions={{ 
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS 
+        }}
+      >
         <Stack.Screen name="OnKisim1" component={OnKisim1} />
         <Stack.Screen name="OnKisim2" component={OnKisim2} />
         <Stack.Screen name="OnKisim3" component={OnKisim3} />

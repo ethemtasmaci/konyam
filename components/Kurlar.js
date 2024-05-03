@@ -1,64 +1,74 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 
+import DolarSvg from '../svg/DolarSvg'
+import EuroSvg from '../svg/EuroSvg'
+import AltinSvg from '../svg/AltinSvg'
+import BorsaSvg from '../svg/BorsaSvg'
+
 const Kurlar = () => {
     return (
         <View style={{
             width: '100%',
-            height: 180,
-            backgroundColor: '#F6F6F6',
-
+            height: 165,
+            marginTop: -20,
+            backgroundColor: '#FFF',
         }}>
 
             <View style={{
-                marginLeft: 'auto',
-                marginRight: 'auto',
                 flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                left: 3
             }}>
 
 
                 <View style={{
-                    marginTop: 30,
-                    width: 95,
+                    marginTop: 20,
+                    width: '23%',
                     height: 122,
                     backgroundColor: '#fff',
+                    borderWidth: 0.5,
+                    borderColor: '#F6F6F6',
                     marginRight: 6
                 }}>
                     <View style={{
                         borderTopLeftRadius: 6,
                         borderTopRightRadius: 6,
-                        width: 95,
-                        height: 5,
+                        width: '100%',
+                        height: 3,
                         backgroundColor: '#8CB75E'
                     }} />
-                    <Image style={{
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                        marginTop: 12
-                    }} source={require("../img/DolarImg.png")} />
+
+                    <View style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        top: 10,
+                        marginBottom: 3
+                    }}>
+                        <DolarSvg height={35} width={35} />
+                    </View>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 12,
+                        color: '#000',
+                        fontSize: 11,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
                         marginTop: 12,
                         textAlign: 'center'
                     }}> DOLAR </Text>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 20,
+                        color: '#000',
+                        fontSize: 18,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
                         textAlign: 'center'
                     }}> 30.50 </Text>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 12,
+                        color: '#000',
+                        fontSize: 11,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
+
                         textAlign: 'center'
                     }}> TÜRK LİRASI </Text>
 
@@ -66,141 +76,156 @@ const Kurlar = () => {
 
 
                 <View style={{
-                    marginTop: 30,
-                    width: 95,
+                    marginTop: 20,
+                    width: '23%',
                     height: 122,
+                    borderWidth: 0.5,
+                    borderColor: '#F6F6F6',
                     backgroundColor: '#fff',
                     marginRight: 6
                 }}>
                     <View style={{
                         borderTopLeftRadius: 6,
                         borderTopRightRadius: 6,
-                        width: 95,
-                        height: 5,
+                        width: '100%',
+                        height: 3,
                         backgroundColor: '#D97070'
                     }} />
-                    <Image style={{
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                        marginTop: 12
-                    }} source={require("../img/Euro.png")} />
+                    <View style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        top: 10,
+                        marginBottom: 3
+                    }}>
+                        <EuroSvg height={35} width={35} />
+                    </View>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 12,
+                        color: '#000',
+                        fontSize: 11,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
+
                         marginTop: 12,
                         textAlign: 'center'
                     }}> EURO </Text>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 20,
+                        color: '#000',
+                        fontSize: 18,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
+
                         textAlign: 'center'
                     }}> 30.50 </Text>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 12,
+                        color: '#000',
+                        fontSize: 11,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
+
                         textAlign: 'center'
                     }}> TÜRK LİRASI </Text>
 
                 </View>
 
                 <View style={{
-                    marginTop: 30,
-                    width: 95,
+                    marginTop: 20,
+                    width: '23%',
                     height: 122,
+                    borderWidth: 0.5,
+                    borderColor: '#F6F6F6',
                     backgroundColor: '#fff',
                     marginRight: 6
                 }}>
                     <View style={{
                         borderTopLeftRadius: 6,
                         borderTopRightRadius: 6,
-                        width: 95,
-                        height: 5,
+                        width: '100%',
+                        height: 3,
                         backgroundColor: '#FFBC57'
                     }} />
-                    <Image style={{
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                        marginTop: 12
-                    }} source={require("../img/Altin.png")} />
+                    <View style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        top: 10,
+                        marginBottom: 3
+                    }}>
+                        <AltinSvg height={35} width={35} />
+                    </View>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 12,
+                        color: '#000',
+                        fontSize: 11,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
+
                         marginTop: 12,
                         textAlign: 'center'
                     }}> GRAM ALTIN </Text>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 20,
+                        color: '#000',
+                        fontSize: 18,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
+
                         textAlign: 'center'
                     }}> 1.193,43 </Text>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 12,
+                        color: '#000',
+                        fontSize: 11,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
+
                         textAlign: 'center'
                     }}> TÜRK LİRASI </Text>
 
                 </View>
 
                 <View style={{
-                    marginTop: 30,
-                    width: 95,
+                    marginTop: 20,
+                    width: '23%',
                     height: 122,
+                    borderWidth: 0.5,
+                    borderColor: '#F6F6F6',
                     backgroundColor: '#fff',
                     marginRight: 6
                 }}>
                     <View style={{
                         borderTopLeftRadius: 6,
                         borderTopRightRadius: 6,
-                        width: 95,
-                        height: 5,
+                        width: '100%',
+                        height: 3,
                         backgroundColor: '#5EA5B7'
                     }} />
-                    <Image style={{
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                        marginTop: 12
-                    }} source={require("../img/Borsa.png")} />
+                    <View style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        top: 10,
+                        marginBottom: 3
+                    }}>
+                        <BorsaSvg height={35} width={35} />
+                    </View>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 12,
+                        color: '#000',
+                        fontSize: 11,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
+
                         marginTop: 12,
                         textAlign: 'center'
-                    }}> DOLAR </Text>
+                    }}> BIST100 </Text>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 20,
+                        color: '#000',
+                        fontSize: 18,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
+
                         textAlign: 'center'
                     }}> 8.665,68 </Text>
 
                     <Text style={{
-                        color:'#000',
-                        fontSize: 12,
+                        color: '#000',
+                        fontSize: 11,
                         fontFamily: 'Poppins',
-                        fontWeight: 'bold',
+
                         textAlign: 'center'
                     }}> TÜRK LİRASI </Text>
 

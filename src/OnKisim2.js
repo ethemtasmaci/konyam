@@ -51,7 +51,7 @@ const OnKisim2 = ({ navigation }) => (
       marginLeft: 'auto',
       marginRight: 'auto',
     }}>
-      <View style={{
+      <TouchableOpacity onPress={() => navigation.navigate('OnKisim1')} style={{
         width: 120,
         height: 4,
         marginTop: 45,
@@ -59,7 +59,7 @@ const OnKisim2 = ({ navigation }) => (
         backgroundColor: '#978D86',
       }} />
 
-      <View style={{
+      <TouchableOpacity onPress={() => navigation.navigate('OnKisim2')} style={{
         width: 120,
         height: 4,
         marginTop: 45,
@@ -68,7 +68,7 @@ const OnKisim2 = ({ navigation }) => (
         backgroundColor: '#8CB75E',
       }} />
 
-      <View style={{
+      <TouchableOpacity onPress={() => navigation.navigate('OnKisim3')} style={{
         width: 120,
         height: 4,
         marginTop: 45,

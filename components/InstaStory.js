@@ -60,8 +60,8 @@ const InstaStorys = () => {
                 data={data}
                 duration={10}
                 unPressedBorderColor={"#8CB75E"}
-                unPressedAvatarTextColor={"#000"}
-                pressedAvatarTextColor={'#000'}
+                unPressedAvatarTextColor={"#fff"}
+                pressedAvatarTextColor={'#fff'}
                 pressedBorderColor={"#C9C9C9"}
             />
         </View>

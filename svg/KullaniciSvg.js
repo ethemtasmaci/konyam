@@ -1,16 +1,36 @@
-import { View, Text } from 'react-native'
-import Svg, { Path, Rect, G, Defs, ClipPath, Circle } from 'react-native-svg';
-import React from 'react'
+import * as React from "react"
+import Svg, { G, Path } from "react-native-svg"
 
-const KullaniciSvg = ({ style, width, height, fill }) => {
-    return (
-        <Svg style={style} width={width} height={height} fill={fill} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.574 28.5">
-            <G id="user-svgrepo-com_1_" data-name="user-svgrepo-com (1)" transform="translate(0.731 1)">
-                <Path id="Path_18" data-name="Path 18" d="M20.7,9.35A6.35,6.35,0,1,1,14.35,3,6.35,6.35,0,0,1,20.7,9.35Z" transform="translate(-1.949 -3)" fill="none" stroke={fill} stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-                <Path id="Path_19" data-name="Path 19" d="M16.787,14C10.277,14,5,18.584,5,24.239H28.574C28.574,18.584,23.3,14,16.787,14Z" transform="translate(-4.731 2.261)" fill="none" stroke={fill} stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-            </G>
-        </Svg>
-    )
+function SvgComponent(props) {
+  return (
+    <Svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={25.574}
+      height={28.5}
+      viewBox="0 0 25.574 28.5"
+      {...props}
+    >
+      <G
+        data-name="user-svgrepo-com (1)"
+        fill="none"
+        stroke="#b9b9b9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+      >
+        <Path
+          data-name="Path 18"
+          d="M18.751 6.35A6.35 6.35 0 1112.401 0a6.35 6.35 0 016.35 6.35z"
+          transform="translate(.731 1)"
+        />
+        <Path
+          data-name="Path 19"
+          d="M12.056 16.261C5.546 16.261.269 20.845.269 26.5h23.574c0-5.655-5.274-10.239-11.787-10.239z"
+          transform="translate(.731 1)"
+        />
+      </G>
+    </Svg>
+  )
 }
 
-export default KullaniciSvg
+export default SvgComponent

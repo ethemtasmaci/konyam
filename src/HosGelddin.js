@@ -3,8 +3,12 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 
 import CikisSvg from '../svg/CikisSvg'
+import RutbeSvg from '../svg/RutbeSvg';
+import PuanSvg from '../svg/PuanSvg';
+import IceriklerinisSvg from '../svg/IceriklerinisSvg';
+import ReklamVerinSvg from '../svg/ReklamVerinSvg';
 
-const HosGelddin = () => {
+const HosGeldin = () => {
     const navigation = useNavigation();
 
     const handleMenuPress = (screenName) => {
@@ -13,14 +17,17 @@ const HosGelddin = () => {
     return (
         <>
             <View style={{
-                width: '93%',
+                width: '100%',
                 height: 100,
-                marginLeft: 'auto',
-                marginRight: 'auto',
-                marginTop: -7
+                backgroundColor: '#F6F6F6',
+                left: 10,
+                marginTop: -10,
+                marginBottom: 3
             }}>
                 <View style={{
-                    flexDirection: 'row'
+                    width: '95%',
+                    backgroundColor: '#fff',
+                    flexDirection: 'row',
                 }}>
                     <Text style={{
                         color: '#000',
@@ -34,28 +41,36 @@ const HosGelddin = () => {
                     }}>
                         <Text style={{
                             color: '#9B9B9B',
+                            right: 5
                         }}>Çıkış</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{
+                    width: '100%',
+                    height: 10,
+                    backgroundColor: '#fff'
+                }} />
+                <View style={{
                     width: 3,
                     height: 58,
                     backgroundColor: '#8CB75E',
-                    marginTop: 5
+                    borderBottomLeftRadius: 12,
+                    borderTopLeftRadius: 12
                 }} />
                 <View style={{
-                    width: '100%',
+                    width: '95%',
                     height: 58,
-                    backgroundColor: '#F6F6F6',
+                    backgroundColor: '#fff',
                     borderRadius: 6,
                     flexDirection: 'row'
                 }}>
+
                     <View style={{
                         flexDirection: 'row',
                         top: -47,
                         left: 18,
                     }}>
-                        <Image style={{}} source={require("../img/rutbe.png")} />
+                        <RutbeSvg />
                         <View style={{
                             left: 12,
                         }}>
@@ -87,7 +102,7 @@ const HosGelddin = () => {
                         top: -45,
                         left: 45,
                     }}>
-                        <Image style={{}} source={require("../img/puan.png")} />
+                        <PuanSvg />
                         <View style={{
                             left: 12,
                         }}>
@@ -117,9 +132,9 @@ const HosGelddin = () => {
                         top: -45,
                         left: 75,
                     }}>
-                        <Image style={{}} source={require("../img/icerik.png")} />
+                        <IceriklerinisSvg />
                         <View style={{
-                            left: 12,
+                            left: 10,
                         }}>
                             <Text style={{
                                 color: '#000',
@@ -141,4 +156,4 @@ const HosGelddin = () => {
     )
 }
 
-export default HosGelddin
+export default HosGeldin

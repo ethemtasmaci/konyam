@@ -7,9 +7,9 @@ import KayitsizBildirimSvg from '../svg/KayitsizBildirimSvg'
 const GirisPanel = () => {
   const navigation = useNavigation();
 
-    const handleMenuPress = (screenName) => {
-        navigation.navigate(screenName); // İlgili sayfaya yönlendir
-    };
+  const handleMenuPress = (screenName) => {
+    navigation.navigate(screenName); // İlgili sayfaya yönlendir
+  };
   return (
     <>
       <View style={{
@@ -17,12 +17,13 @@ const GirisPanel = () => {
       }}>
 
         <View style={{
-          width: '97%',
+          width: '95%',
           height: 92,
           backgroundColor: '#F7F7F7',
           borderRadius: 3,
-          marginLeft: 'auto',
-          marginRight: 'auto'
+          alignItems: 'center',
+          marginBottom: 10,
+          left: 10
         }}>
           <View style={{
             width: '100%',
@@ -40,14 +41,16 @@ const GirisPanel = () => {
             <View style={{
               width: '20%',
               marginLeft: 15,
+              marginRight: -10,
               marginTop: 5
-            }}><KayitsizBildirimSvg height={50} width={50} /></View>
+            }}><KayitsizBildirimSvg height={47} width={45} /></View>
             <View style={{
-              width: '80%',
+              width: '70%',
               marginLeft: 'auto',
-              marginRight: 'auto'
+              marginRight: 'auto',
+              marginTop: 5
             }}>
-              <Text style={{ color:'#000', fontSize: 15, fontFamily: 'Nunito Sans' }}>Uygulamada sunduğumuz özelliklerin tamamından
+              <Text style={{ color: '#000', fontSize: 13.5, fontFamily: 'Nunito Sans' }}>Uygulamada sunduğumuz özelliklerin tamamından
                 faydalanabilmeniz için <Text onPress={() => handleMenuPress('GirisYap')} style={{ fontWeight: 'bold' }}>kayıt olmalı</Text> veya <Text onPress={() => handleMenuPress('GirisYap')} style={{ fontWeight: 'bold' }}>giriş yapmalısınız</Text>.</Text>
             </View>
           </View>
