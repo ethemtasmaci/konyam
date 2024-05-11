@@ -1,6 +1,6 @@
-import { View, Text, TouchableOpacity, Image, Button, Alert } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
-import { RNCamera } from 'react-native-camera';
+import { Camera, useCameraDevice, useCameraPermission, useMicrophonePermission } from 'react-native-vision-camera';
 import { RadioButton } from 'react-native-paper';
 import Modal from "react-native-modal";
 import Video from 'react-native-video';
@@ -14,15 +14,18 @@ import UyariSvg from '../svg/UyariSvg';
 import LogoSvg from '../svg/LogoSvg';
 
 const VideoGonder = () => {
-    const [photos, setPhotos] = useState([]);
     const [cameraPermission, setCameraPermission] = useState(null); // Başlangıçta null olarak ayarlayın
     const [isRecording, setIsRecording] = useState(false);
     const [isModalVisible, setModalVisible] = useState(false);
+    const [isModalVisible2, setModalVisible2] = useState(false);
     const cameraRef = useRef(null);
     const [videoUri, setVideoUri] = useState(null);
     const [value, setValue] = useState('');
     const [videoUris, setVideoUris] = useState([]);
+    const [recordingTime, setRecordingTime] = useState(0);
     const navigation = useNavigation();
+    const device = useCameraDevice('back');
+    const [cameraType, setCameraType] = useState('back');
 
     const handleMenuPress = (screenName) => {
         navigation.navigate(screenName); // İlgili sayfaya yönlendir
@@ -32,13 +35,14 @@ const VideoGonder = () => {
         setModalVisible(!isModalVisible);
     };
 
-    const resetPhotos = () => {
-        setPhotos([]);
+    const toggleModal2 = () => {
+        setModalVisible2(!isModalVisible2);
     };
 
     useEffect(() => {
         checkCameraPermission();
     }, []);
+
 
     const checkCameraPermission = () => {
         check(PERMISSIONS.ANDROID.CAMERA)
@@ -63,28 +67,45 @@ const VideoGonder = () => {
             });
     };
 
+
     const startRecording = async () => {
         if (!isRecording && cameraRef.current) {
+            if (videoUris.length >= 3) {
+                toggleModal2();
+                return;
+            }
+
             try {
-                if (cameraRef.current.isRecording) {
-                    console.log('Başka bir kayıt çalışıyor lütfen durdurun ve tekrar deneyin.');
-                    await stopRecording(); // Mevcut kayıt işlemini durdur
-                }
-                const { uri } = await cameraRef.current.recordAsync({ maxDuration: 10 });
-                console.log('Video Url: ', uri);
-                setVideoUris(prevUris => [...prevUris, uri]);
+                const video = await cameraRef.current.startRecording({
+                    flash: device?.hasFlash ? 'on' : 'off',
+                    onRecordingFinished: (video) => {
+                        if (video) {
+                            console.log('Video kaydedildi: ', video);
+                            setVideoUris(prevUris => [...prevUris, video.path]); // video.path kullanıldı
+                        } else {
+                            console.log('Video dosyası oluşturulamadı.');
+                        }
+                    },
+                    onRecordingError: (error) => console.error(error),
+                });
                 setIsRecording(true);
-                // toggleModal();
-                setTimeout(stopRecording, 10000);
+                setTimeout(() => {
+                    toggleModal();
+                    stopRecording();
+                }, 10000);
             } catch (error) {
                 console.error('Video Kayıt Hatası: ', error);
             }
-        } else {
-            console.log('Başka bir kayıt işlemi zaten devam ediyor.');
         }
     };
 
-
+    const stopRecording = async () => {
+        if (cameraRef.current) {
+            await cameraRef.current.stopRecording();
+            console.log('Kayıt durduruldu.');
+            setIsRecording(false);
+        }
+    };
 
     // const startRecording = async () => {
     //     if (!isRecording && cameraRef.current) {
@@ -117,13 +138,13 @@ const VideoGonder = () => {
     //     }
     // };
 
-    const stopRecording = async () => {
-        if (cameraRef.current) {
-            await cameraRef.current.stopRecording();
-            console.log('Kayıt durduruldu: ');
-            setIsRecording(false);
-        }
-    };
+    // const stopRecording = async () => {
+    //     if (cameraRef.current) {
+    //         await cameraRef.current.stopRecording();
+    //         console.log('Kayıt durduruldu: ');
+    //         setIsRecording(false);
+    //     }
+    // };
 
     // const takeVideo = async () => {
     //     if (!isRecording && cameraRef.current) {
@@ -133,15 +154,7 @@ const VideoGonder = () => {
     //     }
     // };
 
-    const toggleRecording = () => {
-        if (isRecording) {
-            stopRecording(); // Kaydı durdur
-        } else {
-            startRecording(); // Kayıt başlat
-        }
-    };
-
-    const VideoItem = ({ uri, index }) => {
+    const VideoItem = ({ path, index }) => {
         return (
             <View style={{
                 width: 65,
@@ -156,7 +169,8 @@ const VideoGonder = () => {
                 alignItems: 'center',
                 marginBottom: 15
             }}>
-                <TouchableOpacity onPress={deletePhoto}>
+                {/* buraya video yolu gelcek (video yolunu olamadım :( ) */}
+                <TouchableOpacity onPress={() => removeVideo(path)}>
                     <Text style={{
                         width: 20,
                         height: 20,
@@ -175,7 +189,7 @@ const VideoGonder = () => {
                 </TouchableOpacity>
                 <View key={index} style={{ marginTop: -18 }}>
                     <Video
-                        source={{ uri }}
+                        source={{ uri: path }}
                         style={{
                             width: 55,
                             height: 55,
@@ -191,11 +205,6 @@ const VideoGonder = () => {
                 </View>
             </View>
         );
-    };
-
-    const deletePhoto = () => {
-        setVideoUri(null); // Videoyu null olarak ayarla
-        // setVideoUris(null)
     };
 
 
@@ -259,11 +268,13 @@ const VideoGonder = () => {
                             position: 'relative'
                         }}>
 
-                            <RNCamera
+                            <Camera
                                 ref={cameraRef}
-                                type={RNCamera.Constants.Type.back}
-                                flashMode={RNCamera.Constants.FlashMode.auto}
-                                autoFocus={RNCamera.Constants.AutoFocus.on}
+                                device={device}
+                                isActive={true}
+                                video={true}
+                                flash={device?.hasFlash ? 'torch' : 'off'}
+                                cameraType={cameraType}
                                 style={{
                                     height: '100%',
                                     width: '100%',
@@ -273,7 +284,9 @@ const VideoGonder = () => {
 
 
                             {/* bu kısım ise buna basınca bütün çekilen Fotoğrafları silecek */}
-                            <TouchableOpacity onPress={resetPhotos}>
+                            <TouchableOpacity onPress={() => {
+                                setCameraType(prevCameraType => prevCameraType === 'back' ? 'front' : 'back');
+                            }}>
                                 <TekrarSvg
                                     height={30}
                                     width={30}
@@ -388,6 +401,81 @@ const VideoGonder = () => {
                         }}>Mevcut üyelik seviyenizde tek seferde en fazla
                             <Text style={{ color: '#8CB75E' }}>  10 saniyelik</Text> video gönderebilirsiniz.</Text>
                         <TouchableOpacity onPress={toggleModal} style={{
+                            width: 163,
+                            height: 53,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: '#8CB75E',
+                            borderRadius: 26,
+                            marginTop: 20
+                        }}>
+                            <Text style={{
+                                color: '#fff',
+                                fontSize: 16,
+                                fontFamily: 'Poppins',
+                                fontWeight: '400',
+                            }}>Anladım</Text>
+                        </TouchableOpacity>
+
+                        <View>
+                            <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
+                                <View style={{ flexDirection: 'row', width: '100%', marginTop: 10 }}>
+                                    <RadioButton.Item value="Onayli" color="#8CB75E" style={{ marginLeft: -15, marginRight: -15 }} />
+                                    <Text style={{
+                                        color: '#878787',
+                                        fontSize: 14,
+                                        fontFamily: 'Nunito Sans',
+                                        marginTop: 16,
+                                    }}>Bilgilendirme mesajını tekrar gösterme.</Text>
+                                </View>
+                            </RadioButton.Group>
+                        </View>
+
+                    </View>
+                </Modal>
+
+                <Modal isVisible={isModalVisible2}>
+                    <View style={{
+                        backgroundColor: '#fff',
+                        height: 320,
+                        width: '100%',
+                        borderRadius: 10,
+                        position: 'relative',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+
+                        <TouchableOpacity onPress={toggleModal2} style={{
+                            marginLeft: 'auto',
+                            backgroundColor: '#D6D6D6',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: 50,
+                            height: 40,
+                            width: 40,
+                            right: 15,
+                        }}>
+                            <Text style={{
+                                fontSize: 12,
+                            }}>
+                                X
+                            </Text>
+                        </TouchableOpacity>
+
+                        <UyariSvg height={50} width={50} style={{
+                            marginBottom: 20
+                        }} />
+
+                        <Text style={{
+                            color: '#000',
+                            width: '100%',
+                            fontSize: 18,
+                            fontFamily: 'Nunito Sans',
+                            fontWeight: '400',
+                            textAlign: 'center',
+                        }}>Mevcut üyelik seviyenizde tek seferde en fazla
+                            <Text style={{ color: '#8CB75E' }}>  3 tane </Text> video gönderebilirsiniz.</Text>
+                        <TouchableOpacity onPress={toggleModal2} style={{
                             width: 163,
                             height: 53,
                             justifyContent: 'center',
